@@ -1,10 +1,10 @@
 DFA Generator
 =============
 ---
-Author: 	Dustin Kerns 	</br>
-Date: 		2/6/2014 		</br>
-Modified: 	2/6/2014 		</br>
-Class:		CST-229 Grammars</br>
+Author: 	Dustin Kerns 	<br />
+Date: 		2/6/2014 		<br />
+Modified: 	2/6/2014 		<br />
+Class:		CST-229 Grammars<br />
 Assignment:	Lab #1
 
 Requirements
@@ -47,7 +47,7 @@ STATES:
 (2, NO)
 ```
 
-Transitions are represented with a tuple of the schema (Start_State_Id, Final_State_Id, Transition_Token) separated by newlines. Begin the definition of these transitions after the ```TRANSITIONS:``` header. Any states defined in the config.ini must have transitions defined for all tokens of the alphabet.
+Transitions are represented with a tuple of the schema (Start_State_Id, Final_State_Id, Transition_Token) separated by newlines. Begin the definition of these transitions after the ```TRANSITIONS:``` header. Any states defined in the config.ini must have transitions defined for all tokens of the alphabet. A single state cannot have an ambiguous or duplicate transition.
 
 Example
 ```
