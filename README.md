@@ -67,9 +67,11 @@ The program will automatically load the config.ini and attempt to parse the decl
 Example
 ```
 Config.ini loaded successfully!
-Input: a b b
-Output: INVALID
-Input: a a a
-Output: VALID
+Input: a abb baa aaa
+Output: VALID = { a, aaa }
+Output: INVALID = { abb, baa }
+Input: a aaa aa
+Output: VALID = { a, aaa, aa }
+Output: INVALID = { }
 Input: EXIT!
 ```
