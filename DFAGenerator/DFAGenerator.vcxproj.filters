@@ -21,9 +21,15 @@
     <ClCompile Include="ConfigReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DFAState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConfigReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DFAState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
