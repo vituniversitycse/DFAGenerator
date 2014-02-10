@@ -1,5 +1,9 @@
 #include <iostream>
+#include "ConfigReader.h"
 
 int main(){
-	std::cout << "Hello World" << std::endl;
+	DefaultConfigReader configReader;
+
+	configReader.LoadStates();
+	configReader.LoadTransitions();
 }
