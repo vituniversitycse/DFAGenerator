@@ -6,44 +6,44 @@
 #include <list>
 #include <tuple>
 
+using std::string;
+using std::set;
+using std::tuple;
+using std::list;
+
 class IConfigReader
 {
-
 protected:
-	IConfigReader(std::string filename)
+	IConfigReader(string filename)
 	{
-		try
-		{
-			config.open(filename);
-		}
+		try { config.open(filename); }
 		catch (std::ifstream::failure e)
 		{
 			std::cerr << "An error occurred opening the file\n";
 		}
 	}
-
-	~IConfigReader()
-	{
-		config.close();
-	}
-
+	~IConfigReader() { config.close(); }
 	std::ifstream config;
-
 public:
-	virtual std::set<std::string> LoadAlphabet() = 0;
-	virtual std::set<std::tuple<std::string, std::string>> LoadStates() = 0;
-	virtual std::set<std::tuple<std::string, std::string, std::string>> LoadTransitions() = 0;
-
+	virtual set<string>							LoadAlphabet()		= 0;
+	virtual set<tuple<string, string>>			LoadStates()		= 0;
+	virtual set<tuple<string, string, string>>	LoadTransitions()	= 0;
 };
 
 class DefaultConfigReader : IConfigReader
 {
-
 public:
-	DefaultConfigReader(std::string filename = "../DATA/config.ini") : IConfigReader(filename) {}
-
-	std::set<std::string> LoadAlphabet();
-	std::set<std::tuple<std::string, std::string>> LoadStates();
-	std::set<std::tuple<std::string, std::string, std::string>> LoadTransitions();
-
+	DefaultConfigReader(string filename = "../DATA/config.ini") : IConfigReader(filename) {}
+	set<string>							LoadAlphabet();
+	set<tuple<string, string>>			LoadStates();
+	set<tuple<string, string, string>>	LoadTransitions();
 };
+
+
+
+
+
+void SomeFunction()
+{
+
+}

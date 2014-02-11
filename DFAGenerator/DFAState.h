@@ -1,23 +1,42 @@
 #pragma once
 #include <string>
 #include <map>
+#include "Automata.h"
 
-class DFAState
-{
-public:
-	DFAState();
-	~DFAState();
-
-protected:
-	Classification	classification;
-	std::string		stateID;
-	//Transitions<Key: transitionToken, value: destinationID>
-	std::map<std::string, std::string> transitions;
-};
+using std::string;
+using std::map;
 
 enum Classification
 {
 	START,
 	FINAL,
 	NO
+};
+
+
+
+class State
+{
+public:
+	State();
+	~State();
+
+	virtual void Transition(string transitionToken) = 0;
+
+protected:
+	Classification	classification;
+	string		stateID;
+	//Transitions<Key: transitionToken, value: destinationID>
+	map<string, string> transitions;
+};
+
+class DFAState : State
+{
+public:
+	DFAState(Automata &automata);
+
+	void Transition(string transitionToken);
+
+private:
+	Automata automata;
 };

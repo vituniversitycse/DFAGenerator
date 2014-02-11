@@ -76,13 +76,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Automata.cpp" />
     <ClCompile Include="ConfigReader.cpp" />
     <ClCompile Include="DFAState.cpp" />
+    <ClCompile Include="DFAStateFactory.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Automata.h" />
     <ClInclude Include="ConfigReader.h" />
     <ClInclude Include="DFAState.h" />
+    <ClInclude Include="DFAStateFactory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

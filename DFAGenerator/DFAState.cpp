@@ -1,11 +1,16 @@
 #include "DFAState.h"
 
-
-DFAState::DFAState()
+DFAState::DFAState(Automata &a)
 {
+	automata = a;
 }
 
 
 DFAState::~DFAState()
 {
+}
+
+void DFAState::Transition(string transitionToken)
+{
+
 }
