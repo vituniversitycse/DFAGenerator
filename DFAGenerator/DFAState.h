@@ -13,8 +13,6 @@ enum Classification
 	NO
 };
 
-
-
 class State
 {
 public:
@@ -22,21 +20,23 @@ public:
 	~State();
 
 	virtual void Transition(string transitionToken) = 0;
+	virtual bool IsState(string id) = 0;
 
 protected:
+	string	stateID;
 	Classification	classification;
-	string		stateID;
 	//Transitions<Key: transitionToken, value: destinationID>
-	map<string, string> transitions;
+	map<string, string>	transitions;
 };
 
 class DFAState : State
 {
 public:
-	DFAState(Automata &automata);
-
+	DFAState(Automata &a, string id, Classification classifier, map<string, string> transitionTable);
+	~DFAState();
 	void Transition(string transitionToken);
+	bool IsState(string id) { return id == stateID; }
 
 private:
-	Automata automata;
+	Automata *automata;
 };
