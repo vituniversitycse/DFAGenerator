@@ -1,16 +1,12 @@
 #include "DFAState.h"
-
-DFAState::DFAState(Automata &a, string id, Classification classifier, map<string, string> transition)
-{
-	*automata = a;
-}
-
+#include "Automata.h"
 
 DFAState::~DFAState()
 {
+	delete automata;
 }
 
-void DFAState::Transition(string transitionToken)
+void DFAState::Transition(string token)
 {
 	/*
 	Take in transition token
@@ -19,5 +15,7 @@ void DFAState::Transition(string transitionToken)
 	Set current location to address of destination state
 	*/
 
-	string destination = transitions[transitionToken];
+	string destination = TRANSITIONS[token];
+	automata->ChangeState(destination);
+	return;
 }

@@ -21,8 +21,8 @@ protected:
 		{
 			std::cerr << "An error occurred opening the file\n";
 		}
-	}
-	~IConfigReader() { config.close(); }
+	};
+	~IConfigReader() { config.close(); };
 	std::ifstream config;
 public:
 	virtual set<string>							LoadAlphabet()		= 0;
@@ -33,17 +33,8 @@ public:
 class DefaultConfigReader : IConfigReader
 {
 public:
-	DefaultConfigReader(string filename = "../DATA/config.ini") : IConfigReader(filename) {}
+	DefaultConfigReader(string filename = "../DATA/config.ini") : IConfigReader(filename) { };
 	set<string>							LoadAlphabet();
 	set<tuple<string, string>>			LoadStates();
 	set<tuple<string, string, string>>	LoadTransitions();
 };
-
-
-
-
-
-void SomeFunction()
-{
-
-}

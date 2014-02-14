@@ -2,8 +2,9 @@
 #include <list>
 #include <set>
 #include <tuple>
-#include "DFAState.h"
 
+class Automata;
+class DFAState;
 using std::string;
 using std::tuple;
 using std::list;
@@ -15,7 +16,8 @@ public:
 	DFAStateFactory();
 	~DFAStateFactory();
 
-	list<DFAState> Create(	set<tuple<string, string>> states,
-							set<tuple<string, string, string>> transitions);
+	list<DFAState*> Create(	Automata *automaton,
+							const set<tuple<string, string>> states,
+							const set<tuple<string, string, string>> transitions);
 };
 

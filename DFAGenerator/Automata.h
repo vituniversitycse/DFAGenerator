@@ -4,33 +4,29 @@
 #include <algorithm>
 #include "DFAState.h"
 
+class DefaultConfigReader;
 using std::list;
 using std::string;
 
 class Automata
 {
 public:
-	Automata();
+	Automata(DefaultConfigReader &reader);
 	~Automata();
 
-	void TransitionState(string transitionToken);
-	DFAState* FindState(string stateId);
-
-	DFAState *currentState;
-	list<DFAState*> states;
+	bool ChangeState(const string stateId);
 
 private:
+	DFAState *currentState;
+	list<DFAState*> STATES;
+
 	/*
-	Predicate needed for find_if to locate DFA within the list<DFAState *>
+	Predicate needed for find_if to locate DFA within the list<DFAState*>
 	*/
 	struct Predicate
 	{
-		Predicate(const string &id) : stateId(id) {}
-
-		bool operator() (DFAState *dfa)
-		{
-			return dfa->IsState(stateId);
-		}
+		Predicate(const string &id) : stateId(id) { ; }
+		bool operator() (DFAState *dfa) { return dfa->IsState(stateId); };
 
 	private:
 		string stateId;

@@ -1,8 +1,8 @@
 #pragma once
 #include <string>
 #include <map>
-#include "Automata.h"
 
+class Automata;
 using std::string;
 using std::map;
 
@@ -17,25 +17,33 @@ class State
 {
 public:
 	State();
-	~State();
+	State(	const string id,
+			const Classification classifier,
+			const map<string, string> transitionTable) :	STATE_ID(id),
+															CLASSIFICATION(classifier),
+															TRANSITIONS(transitionTable) { };
 
-	virtual void Transition(string transitionToken) = 0;
-	virtual bool IsState(string id) = 0;
+	virtual void Transition(const string token) = 0;
+	virtual bool IsState(const string id) = 0;
 
 protected:
-	string	stateID;
-	Classification	classification;
-	//Transitions<Key: transitionToken, value: destinationID>
-	map<string, string>	transitions;
+	const string		STATE_ID;
+	Classification		CLASSIFICATION;
+	map<string, string>	TRANSITIONS;	// Transitions<Key: transitionToken, value: destinationID>
 };
 
 class DFAState : State
 {
 public:
-	DFAState(Automata &a, string id, Classification classifier, map<string, string> transitionTable);
+	DFAState(Automata *automaton,
+		const string id,
+		const Classification classifier,
+		const map<string, string> transitionTable) : State(id, classifier, transitionTable),
+													automata(automaton) { };
+
 	~DFAState();
-	void Transition(string transitionToken);
-	bool IsState(string id) { return id == stateID; }
+	void Transition(const string transitionToken);
+	bool IsState(const string id) { return id == STATE_ID; };
 
 private:
 	Automata *automata;

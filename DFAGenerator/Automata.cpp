@@ -1,19 +1,29 @@
 #include "Automata.h"
+#include "DFAStateFactory.h"
+#include "ConfigReader.h"
 
-
-Automata::Automata()
+Automata::Automata(DefaultConfigReader &reader)
 {
+	DFAStateFactory factory;
+	STATES = factory.Create(this, reader.LoadStates(), reader.LoadTransitions());
 }
-
 
 Automata::~Automata()
 {
+	delete currentState, STATES;
 }
 
-DFAState* Automata::FindState(string stateId)
+bool Automata::ChangeState(const string stateId)
 {
 	Predicate predicate(stateId);
 	std::list<DFAState*>::iterator iter;
-	iter = std::find_if(states.begin, states.end, predicate);
-	return *iter;
+	iter = std::find_if(STATES.begin(), STATES.end(), predicate);
+
+	if ((*iter)->IsState(stateId))
+	{
+		currentState = *iter;
+		return true;
+	}
+
+	return false;
 }
