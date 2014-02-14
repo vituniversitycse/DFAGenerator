@@ -1,7 +1,26 @@
 #include "ConfigReader.h"
 
+DefaultConfigReader::DefaultConfigReader(string filename)
+{
+	LoadConfig(filename);
+}
+
+bool DefaultConfigReader::LoadConfig(string filename)
+{
+	try { config.open(filename); }
+	catch (std::ifstream::failure e)
+	{
+		std::cerr << "An error occurred opening the file\n";
+		return false;
+	}
+	return true;
+}
+
 set<string> DefaultConfigReader::LoadAlphabet()
 {
+	/*
+		REQUIRES IMPLEMENTATION
+	*/
 	set<string> AlphabetSet;
 	AlphabetSet.insert("a");
 	AlphabetSet.insert("b");

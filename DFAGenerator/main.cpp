@@ -10,7 +10,8 @@ int main(int argc, char* argv[]){
 	DefaultConfigReader *configReader = (argc > 1) ? new DefaultConfigReader(argv[1]) : new DefaultConfigReader();
 	Automata *automata = new Automata(*configReader);
 
+
+	/* Cleanup */
 	delete configReader;
 	delete automata;
-	
 }
