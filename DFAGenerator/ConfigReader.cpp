@@ -1,16 +1,12 @@
 #include "ConfigReader.h"
 
-DefaultConfigReader::DefaultConfigReader(string filename)
-{
-	LoadConfig(filename);
-}
-
 bool DefaultConfigReader::LoadConfig(string filename)
 {
+	std::cout << ">>> Loading " << filename << "...\n";
 	try { config.open(filename); }
 	catch (std::ifstream::failure e)
 	{
-		std::cerr << "An error occurred opening the file\n";
+		std::cerr << ">>> An error occurred opening the file\n";
 		return false;
 	}
 	return true;

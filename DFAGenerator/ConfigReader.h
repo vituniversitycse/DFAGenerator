@@ -14,7 +14,7 @@ using std::list;
 class IConfigReader
 {
 public:
-	IConfigReader();
+	IConfigReader() {};
 	~IConfigReader() { config.close(); };
 	virtual bool LoadConfig(string filename) = 0;
 	virtual set<string> LoadAlphabet() = 0;
@@ -27,7 +27,7 @@ protected:
 class DefaultConfigReader : IConfigReader
 {
 public:
-	DefaultConfigReader(string filename = "../DATA/config.ini");
+	DefaultConfigReader(string filename = "../DATA/config.ini") { LoadConfig(filename); };
 	bool LoadConfig(string filename);
 	set<string>							LoadAlphabet();
 	set<tuple<string, string>>			LoadStates();

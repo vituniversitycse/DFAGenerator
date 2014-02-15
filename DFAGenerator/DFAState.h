@@ -30,7 +30,7 @@ protected:
 	const string		STATE_ID;
 	Classification		CLASSIFICATION;
 	map<string, string>	TRANSITIONS;	// Transitions<Key: transitionToken, value: destinationID>
-};
+};	
 
 class DFAState : State
 {
